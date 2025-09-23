@@ -3,7 +3,7 @@ import TodoInput from "./TodoInput";
 import TodoTasks from "./TodoTasks";
 import TodoFooter from "./TodoFooter";
 
-// create useState(s) to pass down to children
+
 
 const TodoApp = () => {
 
@@ -11,8 +11,9 @@ const TodoApp = () => {
 
 	return (
 		<>
-		
-
+		<TodoInput todos={todos} setTodos={setTodos} />
+		<TodoTasks todos={todos} setTodos={setTodos} />
+		<TodoFooter todos={todos}/>
 		</>
 	);
 };
