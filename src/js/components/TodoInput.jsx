@@ -17,7 +17,8 @@ const TodoInput = ({todos, setTodos})=> {
 
 		setCounter(counter + 1);
 
-	}
+		setNewTask("");
+  	};
 	
 	const checkTextBox = () => {
 		let textBox = document.querySelector(".new-todo");
@@ -31,6 +32,8 @@ const TodoInput = ({todos, setTodos})=> {
 	
 	return (
 		<>
+			<header className="header text-center">
+			<h1 className="title">To-Do List</h1>
 			<input 
 				type="text"
 				className="new-todo"
@@ -39,9 +42,10 @@ const TodoInput = ({todos, setTodos})=> {
 				onChange={event => setNewTask(event.target.value)}
 			/>
 			<button
-				className="add-task text-white bg-primary rounded-pill"
+				className="add-task ms-2 px-4 py-2 fw-semibold text-white bg-gradient rounded-pill shadow-sm border-0"
 				onClick={checkTextBox}
 			>Add Task</button>
+			</header>
             
 		</>
 	);

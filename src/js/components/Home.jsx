@@ -1,15 +1,13 @@
 import TodoApp from "./TodoApp";
+import '../../styles/todoList.css';
 
 
 const Home = () => {
 	return (
 		<>
 		
-			<div className="container text-center mt-5 bg-secondary">
-
-				<h1 className="header text-center">To-Do List</h1>
+			<div className="container mt-5">
 				<TodoApp />
-
 			</div>
 		</>
 	);
