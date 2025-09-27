@@ -9,13 +9,13 @@ const TodoInput = ({todos, setTodos})=> {
 	const addTask = () => {
 		
 		let newTodoObject = {
-			id: counter,
-			title: newTask,
-		}
+			label: newTask,
+			is_done: false,
+		};
+
+		postData(setTodos, newTodoObject);
 
 		setTodos([...todos, newTodoObject]);
-
-		setCounter(counter + 1);
 
 		setNewTask("");
   	};
