@@ -35,3 +35,15 @@ if(!response.ok) {
             console.log("Successfully posted new todo!");
             getData(setTodos);
 }  
+
+export const deleteTask = async(todoId, setTodos) => {
+    let options = {
+        method: "DELETE",
+    }
+    const response = await fetch(`https://playground.4geeks.com/todo/todos/${todoId}`, options);
+
+    if (response.status === 404) {
+        throw new Error(`Error! Todo ID #${todoId} does not exist!`)
+    }
+    getData(setTodos);
+}

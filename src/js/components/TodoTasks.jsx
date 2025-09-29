@@ -1,11 +1,7 @@
 import '../../styles/todoList.css'
+import { deleteTask } from './fetch';
 
 const TodoTasks = ({todos, setTodos}) => {
-
-	const deleteTask = (todoId) => {
-		let updatedTodos = todos.filter(todo => todo.id !== todoId)
-		setTodos(updatedTodos);
-	}
 
 	let renderTasks = todos.map(todo => {
 		
@@ -14,7 +10,7 @@ const TodoTasks = ({todos, setTodos}) => {
 				<label>{todo.label}</label>
 				<button
 					className="delete-task btn btn-outline-danger btn-sm me-2"
-					onClick={() => {deleteTask(todo.id)}}
+					onClick={() => {deleteTask(todo.id, setTodos)}}
 				>X</button>
 			</li>
 		)

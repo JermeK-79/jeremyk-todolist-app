@@ -34,7 +34,6 @@ const TodoInput = ({todos, setTodos})=> {
 	return (
 		<>
 			<header className="header text-center">
-			<h1 className="title">To-Do List</h1>
 			<input 
 				type="text"
 				className="new-todo"
