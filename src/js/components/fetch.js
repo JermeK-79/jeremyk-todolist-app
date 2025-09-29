@@ -47,3 +47,10 @@ export const deleteTask = async(todoId, setTodos) => {
     }
     getData(setTodos);
 }
+
+export const postNewUser = async(userName) => {
+    let options = {
+        method: "POST"
+    }
+    const response = await fetch(`https://playground.4geeks.com/todo/users/jeremyk`)
+}

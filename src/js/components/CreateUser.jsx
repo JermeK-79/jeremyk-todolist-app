@@ -1,3 +1,4 @@
+import { postNewUser } from "./fetch";
 
 const CreateUser = (userName, setUserName) => {
     const addNewUser = () => {
