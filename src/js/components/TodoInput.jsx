@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { postData } from "./fetch";
 
 
 const TodoInput = ({todos, setTodos})=> {

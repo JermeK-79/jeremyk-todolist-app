@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import TodoInput from "./TodoInput";
 import TodoTasks from "./TodoTasks";
 import TodoFooter from "./TodoFooter";
-import getData from "./fetch";
+import { getData } from "./fetch";
 
 
 
