@@ -1,9 +1,10 @@
 import { postNewUser } from "./fetch";
 
-const CreateUser = (userName, setUserName) => {
+const CreateUser = ({userName, setuserName}) => {
+    
     const addNewUser = () => {
         postNewUser(userName);
-        setUserName("");
+        setuserName("");
     }
     
     const checkTextBox = () => {
@@ -14,24 +15,21 @@ const CreateUser = (userName, setUserName) => {
 		else {
 			addNewUser();
 		}
+    }
 
     return (
 		<>
-			<div className="container mt-5">
-				<header className="header text-center">
 			<input 
 				type="text"
 				className="new-user"
 				placeholder="Enter user name"
 				value={userName}
-				onChange={event => setUserName(event.target.value)}
+				onChange={event => setuserName(event.target.value)}
 			/>
 			<button
 				className="add-newuser ms-2 px-4 py-2 fw-semibold text-white bg-gradient rounded-pill shadow-sm border-0"
 				onClick={checkTextBox}
 			>Add New User</button>
-			</header>
-			</div>
 		</>
 	);
 };

@@ -52,5 +52,11 @@ export const postNewUser = async(userName) => {
     let options = {
         method: "POST"
     }
-    const response = await fetch(`https://playground.4geeks.com/todo/users/jeremyk`)
+    const response = await fetch(`https://playground.4geeks.com/todo/users/${userName}`, options);
+
+        if (response.status === 400) {
+        throw new Error(`Error! User already exists`)
+    }
 }
+
+export const deleteAllTasks = async(todos, setTodos)

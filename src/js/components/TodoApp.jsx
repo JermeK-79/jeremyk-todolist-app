@@ -10,7 +10,7 @@ import { getData } from "./fetch";
 const TodoApp = () => {
 
     const [todos, setTodos] = useState([]);
-	const [userName, setUserName] = useState("")
+	const [userName, setuserName] = useState("")
 
 	useEffect(() => {
 		getData(setTodos);
@@ -21,11 +21,13 @@ const TodoApp = () => {
 		<>
 		<h1 className="title">To-Do List</h1>
 		<div>
-			<CreateUser />
+            <CreateUser userName={userName} setuserName={setuserName} />
+        </div>
+		<div>
+			<TodoInput todos={todos} setTodos={setTodos}/>
+			<TodoTasks todos={todos} setTodos={setTodos} />
+			<TodoFooter todos={todos} setTodos={setTodos} />
 		</div>
-		<TodoInput todos={todos} setTodos={setTodos} />
-		<TodoTasks todos={todos} setTodos={setTodos} />
-		<TodoFooter todos={todos}/>
 		</>
 	);
 };
