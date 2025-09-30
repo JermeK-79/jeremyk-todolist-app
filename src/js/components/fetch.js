@@ -1,4 +1,4 @@
-export const getData = async (setTodos) => {
+export const getData = async(setTodos) => {
 const response = await fetch('https://playground.4geeks.com/todo/users/jeremyk')
     console.log(response);
     if(!response.ok) {
@@ -58,5 +58,3 @@ export const postNewUser = async(userName) => {
         throw new Error(`Error! User already exists`)
     }
 }
-
-export const deleteAllTasks = async(todos, setTodos)

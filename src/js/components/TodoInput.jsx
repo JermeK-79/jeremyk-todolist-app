@@ -33,7 +33,7 @@ const TodoInput = ({todos, setTodos})=> {
 	
 	return (
 		<>
-			<header className="header text-center">
+			<header className="header mt-3 text-center">
 			<input 
 				type="text"
 				className="new-todo"
