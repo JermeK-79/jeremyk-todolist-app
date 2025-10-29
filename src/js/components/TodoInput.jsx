@@ -1,53 +1,45 @@
 import { useState } from "react";
 import { postData } from "./fetch";
 
-
-const TodoInput = ({todos, setTodos})=> {
-	
+const TodoInput = ({ todos, setTodos, currentUser }) => {
 	const [newTask, setNewTask] = useState("");
-	const [counter, setCounter] = useState(0);
 
-	const addTask = () => {
-		
-		let newTodoObject = {
+	const addTask = async () => {
+		if (newTask.trim() === "") {
+			alert("Please add a task.");
+			return;
+		}
+
+		const newTodoObject = {
 			label: newTask,
 			is_done: false,
 		};
 
-		postData(setTodos, newTodoObject);
-
-		setTodos([...todos, newTodoObject]);
-
-		setNewTask("");
-  	};
-	
-	const checkTextBox = () => {
-		let textBox = document.querySelector(".new-todo");
-		if (textBox.value === "") {
-			alert("Please add a task.");
+		try {
+			await postData(setTodos, newTodoObject, currentUser);
+			setNewTask("");
+		} catch (error) {
+			console.error("Failed to add task:", error);
+			alert("Failed to add task. Please try again.");
 		}
-		else {
-			addTask();
-		}
-	}
-	
+	};
+
 	return (
-		<>
-			<header className="header mt-3 text-center">
+		<header className="header mt-3 text-center">
 			<input 
 				type="text"
 				className="new-todo"
 				placeholder="What needs to be done?"
 				value={newTask}
-				onChange={event => setNewTask(event.target.value)}
+				onChange={(event) => setNewTask(event.target.value)}
 			/>
 			<button
-				className="add-task ms-2 px-4 py-2 fw-semibold text-white bg-gradient rounded-pill shadow-sm border-0"
-				onClick={checkTextBox}
-			>Add Task</button>
-			</header>
-            
-		</>
+				className="add-task ms-2 px-4 py-2 fw-semibold text-white bg-success rounded-pill shadow-sm border-0"
+				onClick={addTask}
+			>
+				Add Task
+			</button>
+		</header>
 	);
 };
 
