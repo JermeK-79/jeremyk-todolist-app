@@ -32,6 +32,14 @@ export const postNewUser = async (userName, setCurrentUser) => {
   setCurrentUser(userName);
 };
 
+export const deleteUser = async (userName) => {
+  const response = await fetch(`https://playground.4geeks.com/todo/users/${userName}`, { 
+    method: 'DELETE' 
+  });
+  if (!response.ok) throw new Error(`Delete user failed: ${response.status} ${response.statusText}`);
+  console.log(`User ${userName} deleted successfully.`);
+};
+
 export const deleteAllTasks = async (setTodos, todos, currentUser) => {
   try {
     const deletePromises = todos.map(todo => 
@@ -49,3 +57,4 @@ export const deleteAllTasks = async (setTodos, todos, currentUser) => {
     throw err;
   }
 };
+

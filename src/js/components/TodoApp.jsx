@@ -3,7 +3,7 @@ import CreateUser from "./CreateUser";
 import TodoInput from "./TodoInput";
 import TodoTasks from "./TodoTasks";
 import TodoFooter from "./TodoFooter";
-import { getData } from "./fetch";
+import { getData, deleteUser } from "./fetch";
 
 const TodoApp = () => {
     const [todos, setTodos] = useState([]);
@@ -23,9 +23,21 @@ const TodoApp = () => {
         }
     }, [currentUser]);
 
-    const handleLogout = () => {
-        setCurrentUser(null);
-        setTodos([]);
+    const handleLogout = async () => {
+        const confirmDelete = window.confirm(
+            `Are you sure you want to logout and delete your account "${currentUser}"? This action cannot be undone.`
+        );
+        
+        if (!confirmDelete) return;
+        
+        try {
+            await deleteUser(currentUser);
+            setCurrentUser(null);
+            setTodos([]);
+        } catch (error) {
+            console.error("Failed to delete user:", error);
+            alert("Failed to delete user account.");
+        }
     };
 
     if (!currentUser) {
@@ -49,7 +61,7 @@ const TodoApp = () => {
                     className="btn btn-outline-danger"
                     onClick={handleLogout}
                 >
-                    Logout
+                    Logout & Delete User
                 </button>
             </div>
             <div>
