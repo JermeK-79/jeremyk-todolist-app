@@ -14,7 +14,6 @@ const TodoApp = () => {
 
     useEffect(() => {
         if (currentUser) {
-            // Save to localStorage
             localStorage.setItem('currentUser', currentUser);
             
             const fetchTodos = async () => {
