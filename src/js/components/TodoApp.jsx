@@ -8,10 +8,15 @@ import { getData, deleteUser } from "./fetch";
 const TodoApp = () => {
     const [todos, setTodos] = useState([]);
     const [userName, setuserName] = useState("");
-    const [currentUser, setCurrentUser] = useState(null);
+    const [currentUser, setCurrentUser] = useState(() => {
+        return localStorage.getItem('currentUser') || null;
+    });
 
     useEffect(() => {
         if (currentUser) {
+            // Save to localStorage
+            localStorage.setItem('currentUser', currentUser);
+            
             const fetchTodos = async () => {
                 try {
                     await getData(setTodos, currentUser);
@@ -20,6 +25,8 @@ const TodoApp = () => {
                 }
             };
             fetchTodos();
+        } else {
+            localStorage.removeItem('currentUser');
         }
     }, [currentUser]);
 
@@ -61,7 +68,7 @@ const TodoApp = () => {
                     className="btn btn-outline-danger"
                     onClick={handleLogout}
                 >
-                    Logout & Delete User
+                    Logout & Delete Account
                 </button>
             </div>
             <div>
